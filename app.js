@@ -8,6 +8,7 @@ const hpp = require("hpp");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const cors = require("cors");
+const compression = require("compression");
 const rateLimit = require("express-rate-limit");
 const tourRouter = require("./routes/tourRoutes");
 const userRouter = require("./routes/userRoutes");
@@ -127,6 +128,8 @@ app.use(
     ],
   })
 );
+
+app.use(compression()); // to compress all the text.
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString(); // it will convert the date into readable string

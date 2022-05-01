@@ -51,7 +51,6 @@ if (userDataForm)
     form.append("name", document.getElementById("name").value); // or const email = document.getElementById("email").value;
     form.append("email", document.getElementById("email").value); // or  const name = document.getElementById("name").value
     form.append("photo", document.getElementById("photo").files[0]);
-    console.log(form);
 
     updateSettings(form, "data");
   });

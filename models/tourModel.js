@@ -181,10 +181,10 @@ tourSchema.pre(/^find/, function (next) {
 });
 
 // doc is all the doc that were returned from the query
-tourSchema.post(/^find/, function (doc, next) {
-  console.log(`Query took ${Date.now() - this.start} milliseconds`);
-  next();
-});
+// tourSchema.post(/^find/, function (doc, next) {
+//   console.log(`Query took ${Date.now() - this.start} milliseconds`);
+//   next();
+// });
 
 // // AGGREGATE MIDDLEWARE
 // tourSchema.pre("aggregate", function (next) {
