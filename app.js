@@ -134,12 +134,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// 2. ROUTES
-/**
- * For eg:
- * If there is a request for "/api/v1/users/:id" it will enter the middleware stack and runs the userRouter function because the path has matched.
- */
-
 // For the API routes
 app.use("/", viewRouter); // creating a middle ware which runs on this route only
 app.use("/api/v1/tours", tourRouter); // creating a middle ware which runs on this route only
