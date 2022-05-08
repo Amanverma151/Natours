@@ -21,7 +21,7 @@ module.exports = class Email {
         service: "gmail",
         auth: {
           user: "amanverma152001@gmail.com",
-          pass: "riseandshine",
+          pass: "gmailpassword",
         },
       });
     }
