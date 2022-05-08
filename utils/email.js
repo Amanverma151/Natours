@@ -18,10 +18,10 @@ module.exports = class Email {
     if (process.env.NODE_ENV === "production") {
       // SendGrid
       return nodemailer.createTransport({
-        service: "mailjet",
+        service: "gmail",
         auth: {
-          user: process.env.MAILJET_USER,
-          pass: process.env.MAILJET_PASSWORD,
+          user: "amanverma152001@gmail.com",
+          pass: "riseandshine",
         },
       });
     }
@@ -54,7 +54,7 @@ module.exports = class Email {
       to: this.to,
       subject,
       html,
-      text: htmlToText.fromString(html),
+      text: "Hi there this is an email",
     };
 
     // 3. Create a transporter and send the email
