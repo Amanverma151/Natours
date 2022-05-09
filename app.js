@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const hpp = require("hpp");
-const mongoSanitize = require("express-mongo-sanitize");
+const mongoSanitize = require("express-mongo-sanitize"); // to remove all the dollar signs and dots.
 const xss = require("xss-clean");
 const cors = require("cors");
 const compression = require("compression");
@@ -20,45 +20,6 @@ const globalErrorHandler = require("./controller/errorControllers");
 
 ////// GLOBAL MIDDLEWARE////////////////
 const app = express(); // app will store all the methods and function that express contains
-
-// app.use(function (req, res, next) {
-//   res.setHeader(
-//     "Content-Security-Policy",
-//     "default-src 'self'; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self'"
-//   );
-//   next();
-// });
-
-// const scriptSrcUrls = [
-//   "https://api.tiles.mapbox.com/",
-//   "https://api.mapbox.com/",
-// ];
-// const styleSrcUrls = [
-//   "https://api.mapbox.com/",
-//   "https://api.tiles.mapbox.com/",
-//   "https://fonts.googleapis.com/",
-// ];
-// const connectSrcUrls = [
-//   "https://api.mapbox.com/",
-//   "https://a.tiles.mapbox.com/",
-//   "https://b.tiles.mapbox.com/",
-//   "https://events.mapbox.com/",
-// ];
-// const fontSrcUrls = ["fonts.googleapis.com", "fonts.gstatic.com"];
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     directives: {
-//       defaultSrc: [],
-//       connectSrc: ["'self'", ...connectSrcUrls],
-//       scriptSrc: ["'self'", ...scriptSrcUrls],
-//       styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
-//       workerSrc: ["'self'", "blob:"],
-//       objectSrc: [],
-//       imgSrc: ["'self'", "blob:", "data:"],
-//       fontSrc: ["'self'", ...fontSrcUrls],
-//     },
-//   })
-// );
 
 // Setting pug template engine in express
 app.set("view engine", "pug");
@@ -80,17 +41,6 @@ console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "developement") {
   app.use(morgan("dev"));
 }
-
-// For using HTTP headers
-
-// app.use((req, res, next) => {
-//   res.setHeader(
-//     "Content-Security-Policy",
-//     "script-src  'self' api.mapbox.com",
-//     "script-src-elem 'self' api.mapbox.com"
-//   );
-//   next();
-// });
 
 // for using rate limiting
 const limiter = rateLimit({
