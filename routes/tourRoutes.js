@@ -6,20 +6,6 @@ const reviewRouter = require("./reviewRoutes");
 
 const router = express.Router(); // creating one router function for tour
 
-/**
- * NESTED ROUTES
- * router
-   .route("/:tourId/reviews")
-   .post(
-     authController.protect,
-     authController.restrictTo("user"),
-     reviewController.createReviews
-   );
- * 
- * 
- */
-//
-
 // if it encouter this route it will be redirected to the reviewRouter
 router.use("/:tourId/reviews", reviewRouter);
 
