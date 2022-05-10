@@ -9,6 +9,7 @@ const Email = require("../utils/email");
 // function to create a new token
 // eslint-disable-next-line arrow-body-style
 const signToken = (id) => {
+  // sign("payload(object)","secret","options/callback function")
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
@@ -16,7 +17,6 @@ const signToken = (id) => {
 
 // function for sending the token
 const createSendToken = (user, statusCode, res) => {
-  // sign("payload","secret","options/callback function")
   const token = signToken(user._id);
 
   const cookieOptions = {
